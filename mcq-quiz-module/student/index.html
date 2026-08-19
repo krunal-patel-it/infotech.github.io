@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <meta name="description" content="MCQ Quiz Module - Student Panel" />
+  <title>MCQ Quiz - Student Panel</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="assets/icon-192.png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ========== APP CONTAINER ========== -->
+  <div id="app">
+
+    <!-- ========== LOADING SCREEN ========== -->
+    <div id="screen-loading" class="screen active">
+      <div class="loading-content">
+        <div class="spinner"></div>
+        <p>Loading MCQ Quiz...</p>
+      </div>
+    </div>
+
+    <!-- ========== AUTH SCREEN (Login / Register) ========== -->
+    <div id="screen-auth" class="screen">
+      <div class="auth-container">
+        <div class="auth-header">
+          <div class="logo">MCQ</div>
+          <h1>Quiz Module</h1>
+          <p class="subtitle">Student Panel</p>
+        </div>
+
+        <div id="sheets-status" style="margin-bottom:12px;padding:10px 12px;border-radius:8px;font-size:0.82rem;line-height:1.4;">Checking connection…</div>
+        <div class="auth-tabs">
+          <button class="tab-btn active" data-tab="login">Login</button>
+          <button class="tab-btn" data-tab="register">Register</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="form-login" class="auth-form active">
+          <div class="form-group">
+            <label for="login-email">Email ID</label>
+            <input type="email" id="login-email" placeholder="Enter your email" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" placeholder="Enter password" required autocomplete="current-password" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <p class="form-message" id="login-message"></p>
+        </form>
+
+        <!-- Register Form -->
+        <form id="form-register" class="auth-form">
+          <div class="form-group">
+            <label for="reg-email">Email ID</label>
+            <input type="email" id="reg-email" placeholder="Enter your email" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="reg-mobile">Mobile Number</label>
+            <input type="tel" id="reg-mobile" placeholder="10-digit mobile number" pattern="[0-9]{10}" required />
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password</label>
+            <input type="password" id="reg-password" placeholder="Create password (min 6 chars)" minlength="6" required autocomplete="new-password" />
+          </div>
+          <div class="form-group">
+            <label for="reg-confirm">Confirm Password</label>
+            <input type="password" id="reg-confirm" placeholder="Confirm password" minlength="6" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
+          <p class="form-message" id="register-message"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- ========== MAIN APP (after login) ========== -->
+    <div id="screen-main" class="screen">
+      <!-- Top Header -->
+      <header class="app-header">
+        <div class="header-left">
+          <button id="btn-menu" class="icon-btn" aria-label="Menu">☰</button>
+          <h1 class="app-title">MCQ Quiz</h1>
+        </div>
+        <div class="header-right">
+          <button id="btn-darkmode" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+          <div class="user-avatar" id="user-avatar">S</div>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main id="main-content">
+        <!-- Views will be injected here -->
+      </main>
+
+      <!-- Bottom Navigation -->
+      <nav class="bottom-nav">
+        <button class="nav-item active" data-view="home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-item" data-view="progress">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Progress</span>
+        </button>
+        <button class="nav-item" data-view="profile">
+          <span class="nav-icon">👤</span>
+          <span class="nav-label">Profile</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- ========== QUIZ SCREEN (full screen overlay) ========== -->
+    <div id="screen-quiz" class="screen">
+      <div class="quiz-header">
+        <div class="quiz-meta">
+          <span id="quiz-progress-text">Question 1 / 20</span>
+          <span id="quiz-timer" class="timer">01:00</span>
+        </div>
+        <div class="progress-bar-container">
+          <div id="quiz-progress-bar" class="progress-bar"></div>
+        </div>
+      </div>
+
+      <div class="quiz-body">
+        <div id="question-text" class="question-text">
+          <!-- Question will appear here -->
+        </div>
+
+        <div id="options-container" class="options-container">
+          <!-- Options A B C D -->
+        </div>
+
+        <div id="explanation-box" class="explanation-box hidden">
+          <h4>Explanation</h4>
+          <p id="explanation-text"></p>
+        </div>
+      </div>
+
+      <div class="quiz-footer">
+        <button id="btn-next-question" class="btn btn-primary btn-block" disabled>Next Question</button>
+      </div>
+    </div>
+
+    <!-- ========== RESULT SCREEN ========== -->
+    <div id="screen-result" class="screen">
+      <div class="result-container">
+        <div class="result-icon">🎯</div>
+        <h2>Quiz Completed!</h2>
+        <div class="score-circle">
+          <span id="result-percentage">0%</span>
+        </div>
+        <div class="result-stats">
+          <div class="stat-item">
+            <span class="stat-value" id="result-attempted">0</span>
+            <span class="stat-label">Attempted</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="result-correct">0</span>
+            <span class="stat-label">Correct</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="result-wrong">0</span>
+            <span class="stat-label">Wrong</span>
+          </div>
+        </div>
+        <div class="result-actions">
+          <button id="btn-view-explanations" class="btn btn-outline">View Explanations</button>
+          <button id="btn-go-progress" class="btn btn-primary">My Progress</button>
+          <button id="btn-new-quiz" class="btn btn-secondary">Take Another Quiz</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').then(reg => {
+          console.log('Student SW registered', reg.scope);
+        }).catch(err => console.warn('SW registration failed', err));
+      });
+    }
+  </script>
+</body>
+</html>
