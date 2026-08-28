@@ -5,7 +5,7 @@
  */
 const CONFIG = {
   // PASTE the SAME Web App URL as in admin/js/config.js
-  API_URL: 'https://script.google.com/macros/s/AKfycbxrCFyd5fANp9xJVx0rWn9KJ4jFSi1VB06UMSsiTxk4BZw1ZSaNxrdAwrjJihdIvFtJ8w/exec',
+  API_URL: 'https://script.google.com/macros/s/AKfycbx1VEImFgUYFlkEq9qQid6_f6K3xhCG5aACsTN60rUc0FFRVmEGUmGiuIoXL0K0c0OCQw/exec',
 
   // Must be true for multi-device sync
   USE_GOOGLE_SHEETS: true,
