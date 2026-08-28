@@ -13,7 +13,7 @@
  */
 const CONFIG = {
   // PASTE your Web App URL here (must end with /exec)
-  API_URL: 'https://script.google.com/macros/s/AKfycbx-GAIkkWGLGfePp4AdkQ5LCfywT-0DbtlEommZjgfrzBABY08mC0rGpi0HrO2qHbZ5/exec',
+  API_URL: 'https://script.google.com/macros/s/AKfycbwZvh7cf1eMRcfs5ZFS3-hex8L6xCzxoRKpq1vI7Lwq3CNjJTUmWmjs-gRRDFT9u8gB_A/exec',
 
   // Must be true for multi-device / multi-browser sync
   USE_GOOGLE_SHEETS: true,
