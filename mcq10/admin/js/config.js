@@ -12,11 +12,11 @@
  * ============================================================
  */
 const CONFIG = {
-  // PASTE your Web App URL here (must end with /exec)
-  API_URL: '',
+  // PASTE the SAME Web App URL as in admin/js/config.js
+  API_URL: 'https://script.google.com/macros/s/AKfycbxBjCNQ4TGIqh6fgyq6-Op3RfDZAqXaG-6o_kbmlaJl2wr2wiqePaevVfvTN6w_JUPWnw/exec',
 
-  // Must be true for multi-device / multi-browser sync
-  USE_GOOGLE_SHEETS: false,
+  // Must be true for multi-device sync
+  USE_GOOGLE_SHEETS: true,
 
   TIMEOUT: 25000
 };
